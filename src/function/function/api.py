@@ -5,7 +5,8 @@ from typing import Dict
 import requests
 from falcon import App, Request, Response
 
-from .app import Verify
+from .code import Code
+from .verify import Verify
 from .ping import Ping
 
 
@@ -21,7 +22,7 @@ class FunctionApi(App):
 
 def get_api(is_debug) -> FunctionApi:
     api = FunctionApi(middleware=Logging(is_debug))
-
+    api.add_route("/api/verify/v1/code", Code())
     api.add_route("/api/verify/v1/{type}", Verify())
     api.add_route("/api/verify/v1/ping", Ping())
 

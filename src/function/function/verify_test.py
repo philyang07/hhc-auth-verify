@@ -7,7 +7,7 @@ from unittest.mock import Mock, patch, call
 
 from falcon import HTTPBadRequest
 
-from .app import Verify
+from .verify import Verify
 
 
 class TestVerify:

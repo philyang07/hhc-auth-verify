@@ -16,6 +16,8 @@ pip3 install --upgrade --target ./function \
     falcon \
     serverless-wsgi \
     requests \
-    prance
+    prance \
+    urllib3==1.26.15
+    
 
 cd ../../../

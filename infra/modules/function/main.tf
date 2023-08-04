@@ -115,3 +115,49 @@ resource "aws_iam_role_policy" "ssm_access" {
     ]
   })
 }
+
+# -------------------------------------
+# SES Policy
+# -------------------------------------
+
+data "aws_iam_policy_document" "ses" {
+  statement {
+    effect    = "Allow"
+    actions   = ["ses:SendEmail"]
+    resources = ["*"]
+  }
+}
+
+resource "aws_iam_policy" "ses" {
+  name        = "${var.name}-ses-send-policy"
+  description = "SES send policy"
+  policy      = data.aws_iam_policy_document.ses.json
+}
+
+resource "aws_iam_role_policy_attachment" "ses" {
+  role       = aws_iam_role.function.name
+  policy_arn = aws_iam_policy.ses.arn
+}
+
+# -------------------------------------
+# SNS Policy
+# -------------------------------------
+
+data "aws_iam_policy_document" "sns" {
+  statement {
+    effect    = "Allow"
+    actions   = ["sns:Publish"]
+    resources = ["*"]
+  }
+}
+
+resource "aws_iam_policy" "sns" {
+  name        = "${var.name}-sns-publish-policy"
+  description = "SNS publish policy"
+  policy      = data.aws_iam_policy_document.sns.json
+}
+
+resource "aws_iam_role_policy_attachment" "sns" {
+  role       = aws_iam_role.function.name
+  policy_arn = aws_iam_policy.sns.arn
+}
