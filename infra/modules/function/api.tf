@@ -20,11 +20,11 @@ resource "aws_api_gateway_resource" "function_v1_proxy" {
 }
 
 resource "aws_api_gateway_method" "function_v1_proxy_get" {
-  rest_api_id          = var.api_id
-  resource_id          = aws_api_gateway_resource.function_v1_proxy.id
-  http_method          = "GET"
-  authorization        = "NONE"
-  api_key_required     = true
+  rest_api_id      = var.api_id
+  resource_id      = aws_api_gateway_resource.function_v1_proxy.id
+  http_method      = "GET"
+  authorization    = "NONE"
+  api_key_required = true
 }
 
 resource "aws_api_gateway_integration" "function_v1_proxy_get" {
@@ -47,11 +47,11 @@ resource "aws_api_gateway_method_response" "function_v1_proxy_get" {
 }
 
 resource "aws_api_gateway_method" "function_v1_proxy_post" {
-  rest_api_id          = var.api_id
-  resource_id          = aws_api_gateway_resource.function_v1_proxy.id
-  http_method          = "POST"
-  authorization        = "NONE"
-  api_key_required     = true
+  rest_api_id      = var.api_id
+  resource_id      = aws_api_gateway_resource.function_v1_proxy.id
+  http_method      = "POST"
+  authorization    = "NONE"
+  api_key_required = true
 }
 
 resource "aws_api_gateway_integration" "function_v1_proxy_post" {
