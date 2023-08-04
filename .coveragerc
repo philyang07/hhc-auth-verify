@@ -1,0 +1,4 @@
+[coverage:run]
+relative_files = True
+source = src/function
+branch = True

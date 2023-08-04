@@ -1,0 +1,16 @@
+---
+test_name: Ping
+
+stages:
+  - name: Ping test
+    request:
+      url: "{tavern.env_vars.API_URL}/api/verify/v1/ping"
+      method: GET
+      headers:
+        x-api-key: "{tavern.env_vars.API_KEY}"
+    response:
+      status_code: 200
+      json:
+        ping: Ok
+      headers:
+        content-type: application/json

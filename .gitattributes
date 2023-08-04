@@ -1,0 +1,18 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Specific file types
+*.md text
+*.txt text
+
+*.properties text
+
+*.tf text
+
+*.py text diff=python
+
+*.sh text eol=lf
+*.env text eol=lf
+
+Dockerfile text
+Makefile text
